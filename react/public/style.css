@@ -1,0 +1,72 @@
+
+:root {
+	--white: #FFFFFF;
+	--off_white: #FAFAFA;
+	--blue: #3F51B5;
+	--blue_dark: #303F9F;
+	--grey_dark: #23272A;
+	--grey: #2C2F33;
+	--grey_light: #393D41;
+	--black: #000000;
+	--pink: #F06292;
+	--pink_light: pink;
+
+	--header-height: 64px;
+	--content-margin-large: 24px;
+	--content-margin-small: 16px;
+	--content-margin: var(--content-margin-small);
+
+	--font: Roboto, Helvetica, Arial, sans-serif;
+
+	font-family: var(--font);
+}
+
+/* Adjust settings for large devices */
+@media only screen and (min-width: 720px) {
+	:root {
+		--content-margin: var(--content-margin-large);
+	}
+}
+
+body {
+	height: 100vh;
+	margin: 0;
+	padding: 0;
+	background: var(--wallpaper);
+	color: var(--text);
+
+	--background-transition: background 500ms ease-in-out;
+	--color-transition: color 500ms ease-in-out;
+}
+
+.body-transition {
+	transition: var(--background-transition), var(--color-transition);
+}
+
+.light {
+	--header: var(--blue);
+	--header_hover: var(--blue_dark);
+	--wallpaper: var(--off_white);
+	--elements: var(--white);
+	--text: var(--black);
+	--header_text: var(--white);
+	--primary: var(--blue);
+	--secondary: var(--pink_light);
+	--border-color: rgba(0, 0, 0, 0.12);
+	--border-color-bold: rgba(0, 0, 0, 0.24);
+	--border-color-bolder: rgba(0, 0, 0, 0.72);
+}
+
+.dark {
+	--header: var(--grey_dark);
+	--header_hover: var(--grey);
+	--wallpaper: var(--grey);
+	--elements: var(--grey_light);
+	--text: var(--white);
+	--header_text: var(--white);
+	--primary: var(--blue);
+	--secondary: var(--pink);
+	--border-color: rgba(255, 255, 255, 0.12);
+	--border-color-bold: rgba(255, 255, 255, 0.24);
+	--border-color-bolder: rgba(255, 255, 255, 0.72);
+}

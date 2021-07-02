@@ -1,0 +1,29 @@
+[
+	{
+		"id": 0,
+		"ownerId": 1,
+		"description": "Purdue Dining's famous cookie recipe",
+		"name": "Purdue Chocolate Chip Cookies",
+		"serveCount": 4,
+		"prepTimeMins": 20,
+		"totalTimeMins": 60,
+		"ingredients": "1 cup milk\nflour\n2 cups chocolate chips",
+		"directions": "Mix in bowl and stir\nScoop onto cookie sheet\nBake in oven 40 minutes"
+	},
+	{
+		"id": 1,
+		"ownerId": 2255689,
+		"description": "Very rich brownies",
+		"name": "Double Chocolate Fudge Brownies",
+		"serveCount": 8,
+		"prepTimeMins": 20,
+		"totalTimeMins": 140,
+		"ingredients": "1/2 cup chocolate syrup\nflour\n4 large eggs\n2 cups milk",
+		"directions": "Crack eggs into bowl and separate from yolk\nMix with other ingredients\nI don't know, this is just a test"
+	},
+	{
+		"id": 2,
+		"ownerId": 7,
+		"name": "Secret Krabby Patty Formula"
+	}
+]
