@@ -8,7 +8,7 @@ export class Recipe {
 	public serveCount?: number;
 	public prepTimeMins?: number;
 	public totalTimeMins?: number;
-	public ingredients?: string;
+	public ingredients: string;
 	public directions?: string;
 
 }

@@ -16,11 +16,31 @@ const mapDispatchToProps = (dispatch) => ({
 function ConnectedRecipeDetail(props) {
 	if (props.recipe == null) return null;
 
+	const ingredients = props.recipe.ingredients
+		.split('\n')
+		.map((ingredient, index) => (
+			<li key={index}>{ingredient}</li>
+		));
+
+	const directions = props.recipe.directions
+		.split('\n')
+		.map((step, index) => (
+			<li key={index}>{step}</li>
+		));
+
 	return (
 		<Card variant="outlined" className="recipe-detail">
 			<CardContent>
 				<Typography gutterBottom variant="h5" component="h2">{props.recipe.name}</Typography>
 				<Typography variant="body1" component="p">{props.recipe.description}</Typography>
+				<Typography className="recipe-detail-ingredients-header" variant="h6" component="h6">Ingredients</Typography>
+				<ul className="recipe-detail-ingredients-list">
+					{ingredients}
+				</ul>
+				<Typography className="recipe-detail-ingredients-header" variant="h6" component="h6">Directions</Typography>
+				<ul className="recipe-detail-ingredients-list">
+					{directions}
+				</ul>
 			</CardContent>
 		</Card>
 	);

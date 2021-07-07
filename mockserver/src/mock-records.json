@@ -24,6 +24,8 @@
 	{
 		"id": 2,
 		"ownerId": 7,
-		"name": "Secret Krabby Patty Formula"
+		"name": "Secret Krabby Patty Formula",
+		"ingredients": "8oz ground beef\nDash of pepper\nTomatoes\nLettuce\nSpecial seasoning\nWheat hamburger buns",
+		"directions": "Press beef into patty\nAdd seasoning\nPut patty on bun\nAdd toppings"
 	}
 ]
