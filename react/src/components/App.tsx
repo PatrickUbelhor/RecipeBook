@@ -1,3 +1,4 @@
+import './App.css';
 import React from 'react';
 import { connect } from 'react-redux';
 import { IAppState } from '../model/State';
@@ -28,8 +29,10 @@ class ConnectedApp extends React.Component<any, any> {
 		return (
 			<div className="wrapper">
 				<Header/>
-				<RecipeList recipes={this.props.recipes}/>
-				<RecipeDetail recipe={null}/>
+				<div className="homepage">
+					<RecipeList/>
+					<RecipeDetail/>
+				</div>
 			</div>
 		);
 	}

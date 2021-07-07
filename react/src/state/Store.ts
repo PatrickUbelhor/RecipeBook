@@ -6,7 +6,8 @@ import { Action, Actions } from './Actions';
 const INITIAL_STATE: IAppState = {
 	theme: 'light',
 	errorMessage: null,
-	recipes: []
+	recipes: [],
+	selectedRecipe: null
 };
 
 const reducer = function (state: IAppState = INITIAL_STATE, action: Action) {
@@ -30,6 +31,11 @@ const reducer = function (state: IAppState = INITIAL_STATE, action: Action) {
 			return {
 				...state,
 				recipes: action.payload
+			};
+		case Actions.SELECT_RECIPE:
+			return {
+				...state,
+				selectedRecipe: action.payload
 			};
 		default:
 			return state;

@@ -13,7 +13,9 @@ export enum Actions {
 	GET_RECIPES_SUCCESS = '[RECIPE] Successfully got recipes',
 	CREATE_RECIPE_SUCCESS = '[RECIPE] Successfully created recipe',
 	DELETE_RECIPE_SUCCESS = '[RECIPE] Successfully deleted recipe',
-	UPDATE_RECIPE_SUCCESS = '[RECIPE] Successfully updated recipe'
+	UPDATE_RECIPE_SUCCESS = '[RECIPE] Successfully updated recipe',
+
+	SELECT_RECIPE = '[HOME] Selected recipe'
 }
 
 
@@ -48,5 +50,10 @@ export const deleteRecipeSuccess = (recipe: Recipe): Action => ({
 
 export const updateRecipeSuccess = (recipe: Recipe): Action => ({
 	type: Actions.UPDATE_RECIPE_SUCCESS,
+	payload: recipe
+});
+
+export const selectRecipe = (recipe: Recipe): Action => ({
+	type: Actions.SELECT_RECIPE,
 	payload: recipe
 });
