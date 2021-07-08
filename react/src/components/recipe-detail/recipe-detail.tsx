@@ -1,6 +1,6 @@
 import './recipe-detail.css';
-import { Card, CardContent, Typography } from '@material-ui/core';
 import React from 'react';
+import { Card, CardContent, Typography } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { IAppState } from '../../model/State';
 import { deleteRecipe } from '../../state/Effects';
