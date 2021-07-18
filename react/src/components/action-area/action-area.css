@@ -1,0 +1,11 @@
+.action-area {
+	height: 4em;
+	display: flex;
+	padding-right: 2rem;
+}
+
+#action-area-add-button {
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+}

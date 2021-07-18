@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { IAppState } from '../model/State';
 import { getRecipes, initApp } from '../state/Effects';
+import { ActionArea } from './action-area/action-area';
 import Header from './header/Header';
 import RecipeDetail from './recipe-detail/recipe-detail';
 import RecipeList from './recipe-list/RecipeList';
@@ -30,8 +31,11 @@ class ConnectedApp extends React.Component<any, any> {
 			<div className="wrapper">
 				<Header/>
 				<div className="homepage">
-					<RecipeList/>
-					<RecipeDetail/>
+					<ActionArea/>
+					<div className="homepage-wrapper">
+						<RecipeList/>
+						<RecipeDetail/>
+					</div>
 				</div>
 			</div>
 		);
