@@ -37,6 +37,11 @@ const reducer = function (state: IAppState = INITIAL_STATE, action: Action) {
 				...state,
 				selectedRecipe: action.payload
 			};
+		case Actions.CREATE_RECIPE_SUCCESS:
+			return {
+				recipes: state.recipes.concat(action.payload),
+				selectedRecipe: action.payload
+			};
 		default:
 			return state;
 	}

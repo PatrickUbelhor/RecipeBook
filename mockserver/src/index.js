@@ -12,6 +12,8 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.get('/recipe', (request, response) => {
 	console.log('Received getAllRecipes request');
@@ -21,6 +23,7 @@ app.get('/recipe', (request, response) => {
 app.post('/recipe', (request, response) => {
 	console.log('Received createRecipe request');
 	const id = Math.floor(Math.random() * 1000000000);
+	console.log(request.body);
 	const recipe = request.body;
 	recipe.id = id;
 	data.push(recipe);
