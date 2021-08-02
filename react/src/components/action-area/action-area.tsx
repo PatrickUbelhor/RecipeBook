@@ -4,6 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { NewRecipe } from '../../model/Recipe';
 import { createRecipe } from '../../state/Effects';
+import ListInput from '../shared/list-input/list-input';
 
 const mapDispatchToProps = (dispatch) => ({
 	createRecipe: (recipe) => dispatch(createRecipe(recipe))
@@ -89,6 +90,7 @@ class ConnectedActionArea extends React.Component<any, any> {
 							onChange={this.editField}
 							value={this.state.recipe.name}
 							fullWidth
+							required
 						/>
 						<TextField
 							label="Description"
@@ -103,6 +105,7 @@ class ConnectedActionArea extends React.Component<any, any> {
 							name="serveCount"
 							onChange={this.editField}
 							value={this.state.recipe.serveCount}
+							type="number"
 							fullWidth
 						/>
 						<TextField
@@ -110,6 +113,7 @@ class ConnectedActionArea extends React.Component<any, any> {
 							name="prepTimeMins"
 							onChange={this.editField}
 							value={this.state.recipe.prepTimeMins}
+							type="number"
 							fullWidth
 						/>
 						<TextField
@@ -117,16 +121,18 @@ class ConnectedActionArea extends React.Component<any, any> {
 							name="totalTimeMins"
 							onChange={this.editField}
 							value={this.state.recipe.totalTimeMins}
+							type="number"
 							fullWidth
 						/>
-						<TextField
-							label="Ingredients"
-							name="ingredients"
-							onChange={this.editField}
-							value={this.state.recipe.ingredients}
-							multiline
-							fullWidth
-						/>
+						{/*<TextField*/}
+						{/*	label="Ingredients"*/}
+						{/*	name="ingredients"*/}
+						{/*	onChange={this.editField}*/}
+						{/*	value={this.state.recipe.ingredients}*/}
+						{/*	multiline*/}
+						{/*	fullWidth*/}
+						{/*/>*/}
+						<ListInput onChange={(content) => console.log(content)}/>
 						<TextField
 							label="Directions"
 							name="directions"
