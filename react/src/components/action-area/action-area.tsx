@@ -16,7 +16,7 @@ const EMPTY_RECIPE: NewRecipe = {
 	serveCount: 1,
 	prepTimeMins: 20,
 	totalTimeMins: 60,
-	ingredients: '',
+	ingredients: [],
 	directions: ''
 }
 
@@ -124,15 +124,12 @@ class ConnectedActionArea extends React.Component<any, any> {
 							type="number"
 							fullWidth
 						/>
-						{/*<TextField*/}
-						{/*	label="Ingredients"*/}
-						{/*	name="ingredients"*/}
-						{/*	onChange={this.editField}*/}
-						{/*	value={this.state.recipe.ingredients}*/}
-						{/*	multiline*/}
-						{/*	fullWidth*/}
-						{/*/>*/}
-						<ListInput onChange={(content) => console.log(content)}/>
+						<ListInput
+							label="Ingredients"
+							name="ingredients"
+							onChange={this.editField}
+							value={this.state.recipe.ingredients}
+						/>
 						<TextField
 							label="Directions"
 							name="directions"

@@ -17,7 +17,6 @@ function ConnectedRecipeDetail(props) {
 	if (props.recipe == null) return null;
 
 	const ingredients = props.recipe.ingredients
-		.split('\n')
 		.map((ingredient, index) => (
 			<li key={index}>{ingredient}</li>
 		));

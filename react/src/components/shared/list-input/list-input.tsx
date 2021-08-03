@@ -46,7 +46,6 @@ export default class ListInput extends React.Component<any, any> {
 			nextContent[index] = event.target.value;
 
 		// TODO: since state is updated asychronously, this should probably be in a lifecycle hook
-		// TODO: Strip spaces
 			props.onChange(nextContent
 				.map(entry => entry.trim())
 				.filter(entry => entry.length > 0)
@@ -56,25 +55,68 @@ export default class ListInput extends React.Component<any, any> {
 				content: nextContent
 			};
 		});
+	}
 
+	onChange = (event) => {
+		console.log(event.target);
+		const index = parseInt(event.target.name);
+		let nextValue = this.props.value.slice();
+
+		if (index === this.props.value.length) {
+			nextValue.push('');
+		}
+		nextValue[index] = event.target.value;
+		nextValue = nextValue
+			// .map(entry => entry.trim())
+			.filter(entry => entry.length > 0);
+
+		this.props.onChange({
+			target: {
+				name: this.props.name,
+				value: nextValue
+			}
+		});
 	}
 
 	render() {
-		const fields = this.state.content.map((entry, index) => (
+		const fields = this.props.value.map((entry, index) => (
 			<TextField
 				key={index}
 				name={index + ''}
 				value={entry}
-				onChange={this.onEdit}
-				onBlur={this.onClickAway}
+				onChange={this.onChange}
 				multiline
 				fullWidth
 			/>
-		))
+		));
+
+		const size = this.props.value.length;
+		fields.push(
+			<TextField
+				key={size}
+				name={size + ''}
+				value={''}
+				onChange={this.onChange}
+				multiline
+				fullWidth
+			/>
+		);
+
+		// const fields = this.state.content.map((entry, index) => (
+		// 	<TextField
+		// 		key={index}
+		// 		name={index + ''}
+		// 		value={entry}
+		// 		onChange={this.onEdit}
+		// 		onBlur={this.onClickAway}
+		// 		multiline
+		// 		fullWidth
+		// 	/>
+		// ))
 
 		return (
 			<div className="list-input">
-				<div>Ingredients</div>
+				<div>{this.props.label}</div>
 				{fields}
 			</div>
 		);

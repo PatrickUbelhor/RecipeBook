@@ -7,7 +7,11 @@
 		"serveCount": 4,
 		"prepTimeMins": 20,
 		"totalTimeMins": 60,
-		"ingredients": "1 cup milk\nflour\n2 cups chocolate chips",
+		"ingredients": [
+			"1 cup milk",
+			"flour",
+			"2 cups chocolate chips"
+		],
 		"directions": "Mix in bowl and stir\nScoop onto cookie sheet\nBake in oven 40 minutes"
 	},
 	{
@@ -18,14 +22,26 @@
 		"serveCount": 8,
 		"prepTimeMins": 20,
 		"totalTimeMins": 140,
-		"ingredients": "1/2 cup chocolate syrup\nflour\n4 large eggs\n2 cups milk",
+		"ingredients": [
+			"1/2 cup chocolate syrup",
+			"flour",
+			"4 large eggs",
+			"2 cups milk"
+		],
 		"directions": "Crack eggs into bowl and separate from yolk\nMix with other ingredients\nI don't know, this is just a test"
 	},
 	{
 		"id": 2,
 		"ownerId": 7,
 		"name": "Secret Krabby Patty Formula",
-		"ingredients": "8oz ground beef\nDash of pepper\nTomatoes\nLettuce\nSpecial seasoning\nWheat hamburger buns",
+		"ingredients": [
+			"8oz ground beef",
+			"Dash of pepper",
+			"Tomatoes",
+			"Lettuce",
+			"Special seasoning",
+			"Wheat hamburger buns"
+		],
 		"directions": "Press beef into patty\nAdd seasoning\nPut patty on bun\nAdd toppings"
 	}
 ]
