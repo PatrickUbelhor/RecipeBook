@@ -89,6 +89,8 @@ class ConnectedActionArea extends React.Component<any, any> {
 							name="name"
 							onChange={this.editField}
 							value={this.state.recipe.name}
+							variant="outlined"
+							margin="normal"
 							fullWidth
 							required
 						/>
@@ -97,6 +99,8 @@ class ConnectedActionArea extends React.Component<any, any> {
 							name="description"
 							onChange={this.editField}
 							value={this.state.recipe.description}
+							variant="outlined"
+							margin="normal"
 							multiline
 							fullWidth
 						/>
@@ -105,6 +109,8 @@ class ConnectedActionArea extends React.Component<any, any> {
 							name="serveCount"
 							onChange={this.editField}
 							value={this.state.recipe.serveCount}
+							variant="outlined"
+							margin="normal"
 							type="number"
 							fullWidth
 						/>
@@ -113,6 +119,8 @@ class ConnectedActionArea extends React.Component<any, any> {
 							name="prepTimeMins"
 							onChange={this.editField}
 							value={this.state.recipe.prepTimeMins}
+							variant="outlined"
+							margin="normal"
 							type="number"
 							fullWidth
 						/>
@@ -121,6 +129,8 @@ class ConnectedActionArea extends React.Component<any, any> {
 							name="totalTimeMins"
 							onChange={this.editField}
 							value={this.state.recipe.totalTimeMins}
+							variant="outlined"
+							margin="normal"
 							type="number"
 							fullWidth
 						/>
@@ -135,6 +145,8 @@ class ConnectedActionArea extends React.Component<any, any> {
 							name="directions"
 							onChange={this.editField}
 							value={this.state.recipe.directions}
+							variant="outlined"
+							margin="normal"
 							multiline
 							fullWidth
 						/>

@@ -1,3 +1,4 @@
+import './list-input.css';
 import React from 'react';
 import { TextField } from '@material-ui/core';
 
@@ -85,6 +86,7 @@ export default class ListInput extends React.Component<any, any> {
 				name={index + ''}
 				value={entry}
 				onChange={this.onChange}
+				margin="dense"
 				multiline
 				fullWidth
 			/>
@@ -97,26 +99,15 @@ export default class ListInput extends React.Component<any, any> {
 				name={size + ''}
 				value={''}
 				onChange={this.onChange}
+				margin="dense"
 				multiline
 				fullWidth
 			/>
 		);
 
-		// const fields = this.state.content.map((entry, index) => (
-		// 	<TextField
-		// 		key={index}
-		// 		name={index + ''}
-		// 		value={entry}
-		// 		onChange={this.onEdit}
-		// 		onBlur={this.onClickAway}
-		// 		multiline
-		// 		fullWidth
-		// 	/>
-		// ))
-
 		return (
 			<div className="list-input">
-				<div>{this.props.label}</div>
+				<div className="list-input-label">{this.props.label}</div>
 				{fields}
 			</div>
 		);
