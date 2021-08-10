@@ -12,7 +12,11 @@
 			"flour",
 			"2 cups chocolate chips"
 		],
-		"directions": "Mix in bowl and stir\nScoop onto cookie sheet\nBake in oven 40 minutes"
+		"directions": [
+			"Mix in bowl and stir",
+			"Scoop onto cookie sheet",
+			"Bake in oven 40 minutes"
+		]
 	},
 	{
 		"id": 1,
@@ -28,7 +32,11 @@
 			"4 large eggs",
 			"2 cups milk"
 		],
-		"directions": "Crack eggs into bowl and separate from yolk\nMix with other ingredients\nI don't know, this is just a test"
+		"directions": [
+			"Crack eggs into bowl and separate from yolk",
+			"Mix with other ingredients",
+			"I don't know, this is just a test"
+		]
 	},
 	{
 		"id": 2,
@@ -42,6 +50,11 @@
 			"Special seasoning",
 			"Wheat hamburger buns"
 		],
-		"directions": "Press beef into patty\nAdd seasoning\nPut patty on bun\nAdd toppings"
+		"directions": [
+			"Press beef into patty",
+			"Add seasoning",
+			"Put patty on bun",
+			"Add toppings"
+		]
 	}
 ]

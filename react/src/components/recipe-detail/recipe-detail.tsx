@@ -22,7 +22,6 @@ function ConnectedRecipeDetail(props) {
 		));
 
 	const directions = props.recipe.directions
-		.split('\n')
 		.map((step, index) => (
 			<li key={index}>{step}</li>
 		));

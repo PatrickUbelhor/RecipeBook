@@ -9,7 +9,7 @@ export class Recipe {
 	public prepTimeMins?: number;
 	public totalTimeMins?: number;
 	public ingredients: string[];
-	public directions?: string;
+	public directions?: string[];
 
 }
 
@@ -21,6 +21,6 @@ export class NewRecipe {
 	public prepTimeMins: number;
 	public totalTimeMins: number;
 	public ingredients: string[];
-	public directions: string;
+	public directions: string[];
 
 }

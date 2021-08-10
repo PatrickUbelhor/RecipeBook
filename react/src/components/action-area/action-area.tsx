@@ -17,7 +17,7 @@ const EMPTY_RECIPE: NewRecipe = {
 	prepTimeMins: 20,
 	totalTimeMins: 60,
 	ingredients: [],
-	directions: ''
+	directions: []
 }
 
 class ConnectedActionArea extends React.Component<any, any> {
@@ -140,15 +140,11 @@ class ConnectedActionArea extends React.Component<any, any> {
 							onChange={this.editField}
 							value={this.state.recipe.ingredients}
 						/>
-						<TextField
+						<ListInput
 							label="Directions"
 							name="directions"
 							onChange={this.editField}
 							value={this.state.recipe.directions}
-							variant="outlined"
-							margin="normal"
-							multiline
-							fullWidth
 						/>
 					</DialogContent>
 					<DialogActions>
