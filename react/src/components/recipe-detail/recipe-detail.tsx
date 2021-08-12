@@ -1,6 +1,8 @@
 import './recipe-detail.css';
 import React from 'react';
-import { Card, CardContent, Typography } from '@material-ui/core';
+import { Card, CardContent, IconButton, Typography } from '@material-ui/core';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 import { connect } from 'react-redux';
 import { IAppState } from '../../model/State';
 import { deleteRecipe } from '../../state/Effects';
@@ -29,7 +31,26 @@ function ConnectedRecipeDetail(props) {
 	return (
 		<Card variant="outlined" className="recipe-detail">
 			<CardContent>
-				<Typography gutterBottom variant="h5" component="h2">{props.recipe.name}</Typography>
+				<div className="recipe-detail-header">
+					<Typography gutterBottom variant="h4" component="h2">{props.recipe.name}</Typography>
+					<div>
+						<IconButton
+							aria-label="delete"
+							size="medium"
+							onClick={() => props.deleteRecipe(props.recipe)}
+						>
+							<DeleteIcon fontSize="default"/>
+						</IconButton>
+					</div>
+					<div>
+						<IconButton
+							aria-label="edit"
+							size="medium"
+						>
+							<EditIcon/>
+						</IconButton>
+					</div>
+				</div>
 				<Typography variant="body1" component="p">{props.recipe.description}</Typography>
 				<Typography className="recipe-detail-ingredients-header" variant="h6" component="h6">Ingredients</Typography>
 				<ul className="recipe-detail-ingredients-list">

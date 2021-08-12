@@ -31,9 +31,9 @@ app.post('/recipe', (request, response) => {
 });
 
 app.delete('/recipe/:recipeId', (request, response) => {
-	console.log('Received deleteRecipe request');
-	data = data.filter(recipe => recipe.id !== request.params['recipeId']);
-	response.send;
+	console.log('Received deleteRecipe request', request.params);
+	data = data.filter(recipe => recipe.id !== parseInt(request.params['recipeId']));
+	response.send();
 });
 
 app.listen(PORT_NUM, () => {

@@ -2,6 +2,10 @@
 	margin-left: 1rem;
 }
 
+.recipe-detail-header {
+	display: flex;
+}
+
 .recipe-detail-ingredients-header {
 	margin-top: 1rem !important;
 }

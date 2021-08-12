@@ -6,6 +6,7 @@ import { createRecipeSuccess, deleteRecipeSuccess, getRecipesSuccess, setError, 
 const handleError = (error: any, message: string, dispatch) => {
 	if (error.response === undefined) {
 		console.log('An unknown error has occurred');
+		console.log(error);
 		dispatch(setError(message));
 		return;
 	}

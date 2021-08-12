@@ -39,8 +39,15 @@ const reducer = function (state: IAppState = INITIAL_STATE, action: Action) {
 			};
 		case Actions.CREATE_RECIPE_SUCCESS:
 			return {
+				...state,
 				recipes: state.recipes.concat(action.payload),
 				selectedRecipe: action.payload
+			};
+		case Actions.DELETE_RECIPE_SUCCESS:
+			return {
+				...state,
+				recipes: state.recipes.filter(recipe => recipe.id !== action.payload.id),
+				selectedRecipe: (state.selectedRecipe.id === action.payload.id) ? null : state.selectedRecipe
 			};
 		default:
 			return state;
