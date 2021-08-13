@@ -10,6 +10,11 @@
 	padding-right: 14px;
 }
 
+.list-input.dense {
+	margin-top: 16px;
+	margin-bottom: 8px;
+}
+
 .list-input:hover {
 	border-color: #000000;
 }

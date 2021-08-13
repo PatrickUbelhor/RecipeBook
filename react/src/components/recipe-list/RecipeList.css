@@ -1,7 +1,0 @@
-
-.recipe-list-wrapper {
-	display: flex;
-	flex-direction: column;
-	max-width: fit-content;
-	min-width: 24rem;
-}

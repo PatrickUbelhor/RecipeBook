@@ -106,7 +106,7 @@ export default class ListInput extends React.Component<any, any> {
 		);
 
 		return (
-			<div className="list-input">
+			<div className={`list-input ${this.props.margin ?? 'dense'}`}>
 				<div className="list-input-label">{this.props.label}</div>
 				{fields}
 			</div>

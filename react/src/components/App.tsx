@@ -6,7 +6,7 @@ import { getRecipes, initApp } from '../state/Effects';
 import ActionArea from './action-area/action-area';
 import Header from './header/Header';
 import RecipeDetail from './recipe-detail/recipe-detail';
-import RecipeList from './recipe-list/RecipeList';
+import RecipeList from './recipe-list/recipe-list';
 
 const select = (state: IAppState) => ({
 	theme: state.theme,
