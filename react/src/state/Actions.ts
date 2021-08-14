@@ -1,4 +1,5 @@
 import { Recipe } from '../model/Recipe';
+import { User } from '../model/user.model';
 
 export interface Action {
 	type: Actions,
@@ -9,6 +10,8 @@ export enum Actions {
 	SET_ERROR = '[ERROR] Set error msg',
 	CLEAR_ERROR = '[ERROR] Clear error msg',
 	SET_THEME_SUCCESS = '[THEME] Set theme',
+
+	LOGIN_SUCCESS = '[AUTH] Successfully logged in',
 
 	GET_RECIPES_SUCCESS = '[RECIPE] Successfully got recipes',
 	CREATE_RECIPE_SUCCESS = '[RECIPE] Successfully created recipe',
@@ -31,6 +34,11 @@ export const clearError = () => ({
 export const setThemeSuccess = (theme: string): Action => ({
 	type: Actions.SET_THEME_SUCCESS,
 	payload: theme
+});
+
+export const loginSuccess = (user: User): Action => ({
+	type: Actions.LOGIN_SUCCESS,
+	payload: user
 });
 
 export const getRecipesSuccess = (recipes: Recipe[]): Action => ({

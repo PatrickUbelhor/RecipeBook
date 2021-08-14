@@ -6,6 +6,7 @@ import { Action, Actions } from './Actions';
 const INITIAL_STATE: IAppState = {
 	theme: 'light',
 	errorMessage: null,
+	user: null,
 	recipes: [],
 	selectedRecipe: null
 };
@@ -26,6 +27,11 @@ const reducer = function (state: IAppState = INITIAL_STATE, action: Action) {
 			return {
 				...state,
 				errorMessage: null
+			};
+		case Actions.LOGIN_SUCCESS:
+			return {
+				...state,
+				user: action.payload
 			};
 		case Actions.GET_RECIPES_SUCCESS:
 			return {

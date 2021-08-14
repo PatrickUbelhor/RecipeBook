@@ -1,6 +1,8 @@
+import authClient from '../api/AuthClient';
 import recipeClient from '../api/RecipeClient';
+import userClient from '../api/UserClient';
 import { NewRecipe, Recipe } from '../model/Recipe';
-import { createRecipeSuccess, deleteRecipeSuccess, getRecipesSuccess, setError, setThemeSuccess } from './Actions';
+import { createRecipeSuccess, deleteRecipeSuccess, getRecipesSuccess, loginSuccess, setError, setThemeSuccess } from './Actions';
 
 
 const handleError = (error: any, message: string, dispatch) => {
@@ -29,6 +31,28 @@ export const setTheme = (theme: string) => async (dispatch, getState) => {
 	document.body.classList.replace(from, to);
 	localStorage.setItem('theme', to);
 	dispatch(setThemeSuccess(to));
+};
+
+export const login = (email: string, password: string) => async (dispatch) => {
+	console.log('Logging in');
+
+	try {
+		let response = await authClient.login(email, password);
+		dispatch(loginSuccess(response.data));
+	} catch (error) {
+		handleError(error, 'Something went wrong logging in', dispatch);
+	}
+};
+
+export const createUser = (email: string, username: string, password: string) => async (dispatch) => {
+	console.log('Creating user');
+
+	try {
+		let response = await userClient.createUser(email, username, password);
+		dispatch(loginSuccess(response.data));
+	} catch (error) {
+		handleError(error, 'Something went wrong creating a user', dispatch);
+	}
 };
 
 export const getRecipes = () => async (dispatch) => {
