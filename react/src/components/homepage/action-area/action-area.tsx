@@ -2,9 +2,9 @@ import './action-area.css';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from '@material-ui/core';
 import React from 'react';
 import { connect } from 'react-redux';
-import { NewRecipe } from '../../model/Recipe';
-import { createRecipe } from '../../state/Effects';
-import ListInput from '../shared/list-input/list-input';
+import { NewRecipe } from '../../../model/Recipe';
+import { createRecipe } from '../../../state/Effects';
+import ListInput from '../../shared/list-input/list-input';
 
 const mapDispatchToProps = (dispatch) => ({
 	createRecipe: (recipe) => dispatch(createRecipe(recipe))

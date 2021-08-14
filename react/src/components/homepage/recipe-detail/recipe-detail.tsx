@@ -4,8 +4,8 @@ import { Card, CardContent, IconButton, Typography } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import { connect } from 'react-redux';
-import { IAppState } from '../../model/State';
-import { deleteRecipe } from '../../state/Effects';
+import { IAppState } from '../../../model/State';
+import { deleteRecipe } from '../../../state/Effects';
 
 const select = (state: IAppState) => ({
 	recipe: state.selectedRecipe
