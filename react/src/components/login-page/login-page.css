@@ -1,4 +1,27 @@
 .login-page {
 	display: flex;
+	height: 50vh;
 	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.login-page-form {
+	display: flex;
+	flex-direction: column;
+	min-width: 20rem;
+}
+
+.login-page-form-title {
+	margin-bottom: 1rem !important;
+}
+
+.login-page-form-submit-button {
+	margin-top: 1.5rem !important;
+}
+
+.login-page-create-link {
+	margin-left: auto;
+	color: #46B2D5;
+	cursor: pointer;
 }

@@ -5,7 +5,7 @@ type AuthResponse<T> = Promise<AxiosResponse<T>>
 class AuthClient {
 
 	authClient = axios.create({
-		baseURL: process.env.AUTH_SERVER_URL
+		baseURL: process.env.REACT_APP_AUTH_SERVER_URL
 	});
 
 

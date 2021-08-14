@@ -5,10 +5,11 @@ import { IAppState } from '../model/State';
 import { getRecipes, initApp } from '../state/Effects';
 import Header from './header/Header';
 import Homepage from './homepage/homepage';
+import LoginPage from './login-page/login-page';
 
 const select = (state: IAppState) => ({
 	theme: state.theme,
-	recipes: state.recipes
+	user: state.user
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -25,10 +26,12 @@ class ConnectedApp extends React.Component<any, any> {
 	}
 
 	render() {
+		const currentPage = this.props.user ? <Homepage/> : <LoginPage/>
+
 		return (
 			<div className="wrapper">
 				<Header/>
-				<Homepage/>
+				{currentPage}
 			</div>
 		);
 	}

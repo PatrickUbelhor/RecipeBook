@@ -1,6 +1,6 @@
 import './login-page.css';
 import React from 'react';
-import { Button, TextField } from '@material-ui/core';
+import { Button, Card, CardActions, CardContent, TextField, Typography } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { createUser, login } from '../../state/Effects';
 
@@ -16,16 +16,26 @@ class ConnectedLoginPage extends React.Component<any, any> {
 
 		this.state = {
 			email: '',
-			password: ''
+			username: '',
+			password: '',
+			// confirmPassword: '',
+			isCreateMode: false
 		};
 	}
 
 	componentDidMount() {
 		console.log('Auth endpoint: ');
-		console.log(process.env.AUTH_SERVER_URL);
+		console.log(process.env.REACT_APP_AUTH_SERVER_URL);
 	}
 
-	handleSubmit = () => {
+	handleSubmit = (event) => {
+		event.preventDefault();
+
+		if (this.state.isCreateMode) {
+			this.props.createUser(this.state.email, this.state.username, this.state.password);
+			return;
+		}
+
 		this.props.login(this.state.email, this.state.password);
 	};
 
@@ -38,29 +48,90 @@ class ConnectedLoginPage extends React.Component<any, any> {
 		}));
 	};
 
+	onModeChange = () => {
+		this.setState((state) => ({
+			isCreateMode: !state.isCreateMode
+		}));
+	}
+
 	render() {
+		const emailField = (
+			<TextField
+				autoFocus
+				label="Email"
+				name="email"
+				value={this.state.email}
+				onChange={this.onChange}
+				variant="outlined"
+				margin="dense"
+				type="email"
+			/>
+		);
+
+		const usernameField = (
+			<TextField
+				label="Username"
+				name="username"
+				value={this.state.username}
+				onChange={this.onChange}
+				variant="outlined"
+				margin="dense"
+				type="text"
+			/>
+		);
+
+		const passwordField = (
+			<TextField
+				label="Password"
+				name="password"
+				value={this.state.password}
+				onChange={this.onChange}
+				variant="outlined"
+				margin="dense"
+				type="password"
+			/>
+		);
+
+		/*const confirmPasswordField = (
+			<TextField
+				label="Confirm Password"
+				name="confirmPassword"
+				value={this.state.confirmPassword}
+				onChange={this.onChange}
+				variant="outlined"
+				margin="dense"
+				type="password"
+			/>
+		);*/
+
 		return (
 			<div className="login-page">
-				<TextField
-					autoFocus
-					label="Email"
-					name="email"
-					value={this.state.email}
-					onChange={this.onChange}
-					variant="outlined"
-					margin="normal"
-					type="email"
-				/>
-				<TextField
-					label="Password"
-					name="password"
-					value={this.state.password}
-					onChange={this.onChange}
-					variant="outlined"
-					margin="normal"
-					type="password"
-				/>
-				<Button onClick={this.handleSubmit}>Submit</Button>
+				<Card variant="elevation">
+					<CardContent>
+						<form className="login-page-form" onSubmit={this.handleSubmit}>
+							<Typography className="login-page-form-title" variant="h4">
+								{this.state.isCreateMode ? 'Create Account' : 'Login'}
+							</Typography>
+							{emailField}
+							{this.state.isCreateMode ? usernameField : null}
+							{passwordField}
+							{/*{this.state.isCreateMode ? confirmPasswordField : null}*/}
+							<Button
+								className="login-page-form-submit-button"
+								onClick={this.handleSubmit}
+								color="primary"
+								variant="contained"
+								type="submit"
+							>{this.state.isCreateMode ? 'Create' : 'Login'}</Button>
+						</form>
+					</CardContent>
+					<CardActions>
+						<div
+							className="login-page-create-link"
+							onClick={this.onModeChange}
+						>{this.state.isCreateMode ? 'Go to login' : 'Create an account'} &gt;</div>
+					</CardActions>
+				</Card>
 			</div>
 		);
 	}
