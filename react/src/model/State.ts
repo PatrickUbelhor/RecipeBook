@@ -4,7 +4,8 @@ import { User } from './user.model';
 export interface IAppState {
 	theme: string;
 	errorMessage: string;
-	user: User;
+	token: string;
+	self: User;
 	recipes: Recipe[];
 	selectedRecipe: Recipe;
 }

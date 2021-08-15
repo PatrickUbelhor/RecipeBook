@@ -6,7 +6,8 @@ import { Action, Actions } from './Actions';
 const INITIAL_STATE: IAppState = {
 	theme: 'light',
 	errorMessage: null,
-	user: null,
+	token: null,
+	self: null,
 	recipes: [],
 	selectedRecipe: null
 };
@@ -31,7 +32,14 @@ const reducer = function (state: IAppState = INITIAL_STATE, action: Action) {
 		case Actions.LOGIN_SUCCESS:
 			return {
 				...state,
-				user: action.payload
+				token: action.payload.token,
+				self: action.payload.self
+			};
+		case Actions.LOGOUT_SUCCESS:
+			return {
+				...state,
+				token: null,
+				self: null
 			};
 		case Actions.GET_RECIPES_SUCCESS:
 			return {

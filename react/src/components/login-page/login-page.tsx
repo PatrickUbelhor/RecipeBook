@@ -1,12 +1,12 @@
 import './login-page.css';
 import React from 'react';
-import { Button, Card, CardActions, CardContent, TextField, Typography } from '@material-ui/core';
+import { Button, Card, CardActions, CardContent, Checkbox, FormControlLabel, TextField, Typography } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { createUser, login } from '../../state/Effects';
 
 const mapDispatchToProps = (dispatch) => ({
-	login: (email: string, password: string) => dispatch(login(email, password)),
-	createUser: (email: string, username: string, password: string) => dispatch(createUser(email, username, password))
+	login: (email: string, password: string, remember: boolean) => dispatch(login(email, password, remember)),
+	createUser: (email: string, username: string, password: string, remember: boolean) => dispatch(createUser(email, username, password, remember))
 });
 
 class ConnectedLoginPage extends React.Component<any, any> {
@@ -19,29 +19,26 @@ class ConnectedLoginPage extends React.Component<any, any> {
 			username: '',
 			password: '',
 			// confirmPassword: '',
+			remember: false,
 			isCreateMode: false
 		};
-	}
-
-	componentDidMount() {
-		console.log('Auth endpoint: ');
-		console.log(process.env.REACT_APP_AUTH_SERVER_URL);
 	}
 
 	handleSubmit = (event) => {
 		event.preventDefault();
 
 		if (this.state.isCreateMode) {
-			this.props.createUser(this.state.email, this.state.username, this.state.password);
+			this.props.createUser(this.state.email, this.state.username, this.state.password, this.state.remember);
 			return;
 		}
 
-		this.props.login(this.state.email, this.state.password);
+		this.props.login(this.state.email, this.state.password, this.state.remember);
 	};
 
 	onChange = (event) => {
-		const name = event.target.name;
-		const value = event.target.value;
+		const input = event.target;
+		const name = input.name;
+		const value = (input.type === 'checkbox') ? input.checked : input.value;
 
 		this.setState(() => ({
 			[name]: value
@@ -104,6 +101,8 @@ class ConnectedLoginPage extends React.Component<any, any> {
 			/>
 		);*/
 
+		const rememberMeCheckbox = <Checkbox checked={this.state.remember} onChange={this.onChange} />;
+
 		return (
 			<div className="login-page">
 				<Card variant="elevation">
@@ -116,6 +115,7 @@ class ConnectedLoginPage extends React.Component<any, any> {
 							{this.state.isCreateMode ? usernameField : null}
 							{passwordField}
 							{/*{this.state.isCreateMode ? confirmPasswordField : null}*/}
+							<FormControlLabel name="remember" control={rememberMeCheckbox} label={"Remember me"}/>
 							<Button
 								className="login-page-form-submit-button"
 								onClick={this.handleSubmit}

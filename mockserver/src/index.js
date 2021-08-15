@@ -10,7 +10,8 @@ let users;
 
 const corsOptions = {
 	origin: 'http://localhost:3000',
-	optionsSuccessStatus: 200
+	optionsSuccessStatus: 200,
+	exposedHeaders: ['token']
 }
 
 app.use(cors(corsOptions));

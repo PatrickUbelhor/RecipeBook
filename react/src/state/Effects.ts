@@ -2,7 +2,7 @@ import authClient from '../api/AuthClient';
 import recipeClient from '../api/RecipeClient';
 import userClient from '../api/UserClient';
 import { NewRecipe, Recipe } from '../model/Recipe';
-import { createRecipeSuccess, deleteRecipeSuccess, getRecipesSuccess, loginSuccess, setError, setThemeSuccess } from './Actions';
+import { createRecipeSuccess, deleteRecipeSuccess, getRecipesSuccess, loginSuccess, logoutSuccess, setError, setThemeSuccess } from './Actions';
 
 
 const handleError = (error: any, message: string, dispatch) => {
@@ -22,6 +22,15 @@ export const initApp = () => async (dispatch) => {
 	if (theme) {
 		dispatch(setThemeSuccess(theme));
 	}
+
+	const token = localStorage.getItem('token');
+	const self = JSON.parse(localStorage.getItem('self'));
+	if (token && self) {
+		dispatch(loginSuccess(token, self))
+	} else {
+		localStorage.removeItem('token');
+		localStorage.removeItem('self');
+	}
 };
 
 export const setTheme = (theme: string) => async (dispatch, getState) => {
@@ -33,23 +42,50 @@ export const setTheme = (theme: string) => async (dispatch, getState) => {
 	dispatch(setThemeSuccess(to));
 };
 
-export const login = (email: string, password: string) => async (dispatch) => {
+export const login = (email: string, password: string, remember: boolean) => async (dispatch) => {
 	console.log('Logging in');
 
 	try {
-		let response = await authClient.login(email, password);
-		dispatch(loginSuccess(response.data));
+		const response = await authClient.login(email, password);
+		console.log(response)
+		const token = response.headers.token;
+		const self = response.data
+
+		if (remember) {
+			localStorage.setItem('token', token);
+			localStorage.setItem('self', JSON.stringify(self));
+		}
+
+		dispatch(loginSuccess(token, self));
 	} catch (error) {
 		handleError(error, 'Something went wrong logging in', dispatch);
 	}
 };
 
-export const createUser = (email: string, username: string, password: string) => async (dispatch) => {
+export const logout = () => async (dispatch, getState) => {
+	try {
+		await authClient.logout(getState().token);
+		localStorage.clear(); // TODO: preserve theme?
+		dispatch(logoutSuccess());
+	} catch (error) {
+		handleError(error, 'Something went wrong logging out', dispatch);
+	}
+}
+
+export const createUser = (email: string, username: string, password: string, remember: boolean) => async (dispatch) => {
 	console.log('Creating user');
 
 	try {
 		let response = await userClient.createUser(email, username, password);
-		dispatch(loginSuccess(response.data));
+		const token = response.headers.token;
+		const self = response.data;
+
+		if (remember) {
+			localStorage.setItem('token', token);
+			localStorage.setItem('self', JSON.stringify(self));
+		}
+
+		dispatch(loginSuccess(token, self));
 	} catch (error) {
 		handleError(error, 'Something went wrong creating a user', dispatch);
 	}

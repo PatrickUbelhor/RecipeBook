@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
+import { User } from '../model/user.model';
 
 type AuthResponse<T> = Promise<AxiosResponse<T>>
 
@@ -9,7 +10,7 @@ class AuthClient {
 	});
 
 
-	login = (email: string, password: string): AuthResponse<any> => {
+	login = (email: string, password: string): AuthResponse<User> => {
 		return this.authClient.get('/login', {
 			headers: {
 				email: email,

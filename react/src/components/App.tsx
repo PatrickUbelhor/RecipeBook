@@ -9,7 +9,7 @@ import LoginPage from './login-page/login-page';
 
 const select = (state: IAppState) => ({
 	theme: state.theme,
-	user: state.user
+	self: state.self
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -26,7 +26,7 @@ class ConnectedApp extends React.Component<any, any> {
 	}
 
 	render() {
-		const currentPage = this.props.user ? <Homepage/> : <LoginPage/>
+		const currentPage = this.props.self ? <Homepage/> : <LoginPage/>
 
 		return (
 			<div className="wrapper">

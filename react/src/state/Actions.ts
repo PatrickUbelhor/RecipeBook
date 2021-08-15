@@ -12,6 +12,7 @@ export enum Actions {
 	SET_THEME_SUCCESS = '[THEME] Set theme',
 
 	LOGIN_SUCCESS = '[AUTH] Successfully logged in',
+	LOGOUT_SUCCESS = '[AUTH] Successfully logged out',
 
 	GET_RECIPES_SUCCESS = '[RECIPE] Successfully got recipes',
 	CREATE_RECIPE_SUCCESS = '[RECIPE] Successfully created recipe',
@@ -36,9 +37,16 @@ export const setThemeSuccess = (theme: string): Action => ({
 	payload: theme
 });
 
-export const loginSuccess = (user: User): Action => ({
+export const loginSuccess = (token: string, self: User): Action => ({
 	type: Actions.LOGIN_SUCCESS,
-	payload: user
+	payload: {
+		token: token,
+		self: self
+	}
+});
+
+export const logoutSuccess = (): Action => ({
+	type: Actions.LOGOUT_SUCCESS
 });
 
 export const getRecipesSuccess = (recipes: Recipe[]): Action => ({
