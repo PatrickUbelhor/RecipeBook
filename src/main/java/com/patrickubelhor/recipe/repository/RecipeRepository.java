@@ -1,4 +1,4 @@
-package com.patrickubelhor.recipe;
+package com.patrickubelhor.recipe.repository;
 
 import com.patrickubelhor.recipe.model.Recipe;
 import org.springframework.data.jpa.repository.Query;

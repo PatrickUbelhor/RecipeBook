@@ -1,6 +1,10 @@
-package com.patrickubelhor.recipe;
+package com.patrickubelhor.recipe.controller;
 
+import com.patrickubelhor.recipe.exception.NotOwnerException;
 import com.patrickubelhor.recipe.model.Recipe;
+import com.patrickubelhor.recipe.model.User;
+import com.patrickubelhor.recipe.service.AuthService;
+import com.patrickubelhor.recipe.service.RecipeService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,19 +27,26 @@ import java.util.List;
 public class RecipeController {
 	
 	private static final Logger logger = LogManager.getLogger(RecipeController.class);
+	private final AuthService authService;
 	private final RecipeService recipeService;
 	
 	@Autowired
-	public RecipeController(RecipeService recipeService) {
+	public RecipeController(AuthService authService, RecipeService recipeService) {
+		this.authService = authService;
 		this.recipeService = recipeService;
 	}
 	
 	
 	@PostMapping(value = "/recipe", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Recipe> createRecipe(@RequestBody Recipe recipe) {
-		
+	public ResponseEntity<Recipe> createRecipe(
+			@RequestHeader String token,
+			@RequestBody Recipe recipe
+	) {
 		logger.info("Received createRecipe request");
-		recipeService.createRecipe(recipe);
+		
+		User user = authService.validateToken(token);
+		recipeService.createRecipe(user, recipe);
+		
 		logger.info("Created recipe '{}'", recipe.getName());
 		
 		return ResponseEntity.status(HttpStatus.CREATED)
@@ -43,9 +55,14 @@ public class RecipeController {
 	
 	
 	@GetMapping(value = "/recipe")
-	public ResponseEntity<List<Recipe>> getAllRecipes() {
+	public ResponseEntity<List<Recipe>> getAllRecipes(
+			@RequestHeader String token
+	) {
 		logger.info("Received getAllRecipes request");
-		List<Recipe> recipes = recipeService.getAllRecipes();
+		
+		User user = authService.validateToken(token);
+		List<Recipe> recipes = recipeService.getAllRecipes(); // TODO: get all recipes from user
+		
 		logger.info("Got all recipes");
 		
 		return ResponseEntity.ok(recipes);
@@ -53,8 +70,20 @@ public class RecipeController {
 	
 	
 	@DeleteMapping(value = "/recipe/{recipeId}")
-	public ResponseEntity<Void> deleteRecipe(@PathVariable Long recipeId) {
+	public ResponseEntity<Void> deleteRecipe(
+			@PathVariable Long recipeId,
+			@RequestHeader String token
+	) {
 		logger.info("Received deleteRecipe request");
+		
+		User user = authService.validateToken(token);
+		Recipe recipe = recipeService.getRecipe(recipeId);
+		
+		// Throw exception if user doesn't own recipe
+		if (!user.getId().equals(recipe.getOwnerId())) {
+			throw new NotOwnerException(user.getId());
+		}
+		
 		recipeService.deleteRecipe(recipeId);
 		logger.info("Deleted recipe '{}'", recipeId);
 		
