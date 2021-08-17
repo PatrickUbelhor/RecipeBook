@@ -1,9 +1,14 @@
 .recipe-detail {
 	margin-left: 1rem;
+	margin-right: 1rem;
 }
 
 .recipe-detail-header {
 	display: flex;
+}
+
+.recipe-detail-header-actions {
+	margin-left: auto;
 }
 
 .recipe-detail-ingredients-header {

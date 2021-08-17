@@ -1,7 +1,7 @@
 .action-area {
 	height: 4em;
 	display: flex;
-	padding-right: 2rem;
+	padding-right: 1rem;
 }
 
 #action-area-add-button {

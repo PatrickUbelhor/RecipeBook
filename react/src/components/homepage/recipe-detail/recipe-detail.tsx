@@ -33,7 +33,7 @@ function ConnectedRecipeDetail(props) {
 			<CardContent>
 				<div className="recipe-detail-header">
 					<Typography gutterBottom variant="h4" component="h2">{props.recipe.name}</Typography>
-					<div>
+					<div className="recipe-detail-header-actions">
 						<IconButton
 							aria-label="delete"
 							size="medium"
@@ -41,8 +41,6 @@ function ConnectedRecipeDetail(props) {
 						>
 							<DeleteIcon fontSize="default"/>
 						</IconButton>
-					</div>
-					<div>
 						<IconButton
 							aria-label="edit"
 							size="medium"
