@@ -5,14 +5,28 @@
 
 .recipe-detail-header {
 	display: flex;
+	align-items: center;
+	margin-bottom: 12px;
 }
 
 .recipe-detail-header-actions {
 	margin-left: auto;
 }
 
+.recipe-detail-header-actions-delete {
+	margin-right: 4px !important;
+}
+
+.recipe-detail-header-actions-edit {
+	margin-left: 4px !important;
+}
+
 .recipe-detail-ingredients-header {
 	margin-top: 1rem !important;
+}
+
+.recipe-detail-ingredients-header > h2 {
+	margin-bottom: 0 !important;
 }
 
 .recipe-detail-ingredients-list {

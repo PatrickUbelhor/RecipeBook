@@ -32,18 +32,20 @@ function ConnectedRecipeDetail(props) {
 		<Card variant="outlined" className="recipe-detail">
 			<CardContent>
 				<div className="recipe-detail-header">
-					<Typography gutterBottom variant="h4" component="h2">{props.recipe.name}</Typography>
+					<Typography variant="h4" component="h2">{props.recipe.name}</Typography>
 					<div className="recipe-detail-header-actions">
 						<IconButton
+							className="recipe-detail-header-actions-delete"
 							aria-label="delete"
-							size="medium"
+							size="small"
 							onClick={() => props.deleteRecipe(props.recipe)}
 						>
 							<DeleteIcon fontSize="default"/>
 						</IconButton>
 						<IconButton
+							className="recipe-detail-header-actions-edit"
 							aria-label="edit"
-							size="medium"
+							size="small"
 						>
 							<EditIcon/>
 						</IconButton>
