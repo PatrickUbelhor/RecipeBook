@@ -10,18 +10,33 @@ class RecipeClient {
 	});
 
 
-	getAllRecipes = (): RecipeResponse<Recipe[]> => {
-		return this.recipeClient.get('/recipe');
+	getAllRecipes = (token: string): RecipeResponse<Recipe[]> => {
+		const url = '/recipe';
+		const config = {
+			headers: { token: token }
+		};
+
+		return this.recipeClient.get(url, config);
 	};
 
 
-	createRecipe = (recipe: NewRecipe): RecipeResponse<Recipe> => {
-		return this.recipeClient.post('/recipe', recipe);
+	createRecipe = (token: string, recipe: NewRecipe): RecipeResponse<Recipe> => {
+		const url = '/recipe';
+		const config = {
+			headers: { token: token }
+		};
+
+		return this.recipeClient.post(url, recipe, config);
 	}
 
 
-	deleteRecipe = (recipe: Recipe): RecipeResponse<void> => {
-		return this.recipeClient.delete(`/recipe/${recipe.id}`);
+	deleteRecipe = (token: string, recipe: Recipe): RecipeResponse<void> => {
+		const url = `/recipe/${recipe.id}`;
+		const config = {
+			headers: { token: token }
+		};
+
+		return this.recipeClient.delete(url, config);
 	};
 
 }

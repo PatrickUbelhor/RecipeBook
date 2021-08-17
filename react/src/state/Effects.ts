@@ -91,29 +91,29 @@ export const createUser = (email: string, username: string, password: string, re
 	}
 };
 
-export const getRecipes = () => async (dispatch) => {
+export const getRecipes = () => async (dispatch, getState) => {
 	console.log('Getting recipes');
 
 	try {
-		let response = await recipeClient.getAllRecipes();
+		let response = await recipeClient.getAllRecipes(getState().token);
 		dispatch(getRecipesSuccess(response.data));
 	} catch (error) {
 		handleError(error, 'Something went wrong getting the list of recipes', dispatch);
 	}
 };
 
-export const createRecipe = (recipe: NewRecipe) => async (dispatch) => {
+export const createRecipe = (recipe: NewRecipe) => async (dispatch, getState) => {
 	try {
-		const response = await recipeClient.createRecipe(recipe);
+		const response = await recipeClient.createRecipe(getState().token, recipe);
 		dispatch(createRecipeSuccess(response.data));
 	} catch (error) {
 		handleError(error, 'Something went wrong creating a recipe', dispatch);
 	}
 };
 
-export const deleteRecipe = (recipe: Recipe) => async (dispatch) => {
+export const deleteRecipe = (recipe: Recipe) => async (dispatch, getState) => {
 	try {
-		await recipeClient.deleteRecipe(recipe);
+		await recipeClient.deleteRecipe(getState().token, recipe);
 		dispatch(deleteRecipeSuccess(recipe));
 	} catch (error) {
 		handleError(error, 'Something went wrong deleting the recipe', dispatch);

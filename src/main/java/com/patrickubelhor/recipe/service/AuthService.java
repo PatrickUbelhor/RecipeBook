@@ -14,8 +14,8 @@ public class AuthService {
 	
 	private final WebClient client;
 	
-	public AuthService(WebClient.Builder builder) {
-		this.client = builder.baseUrl(AUTH_URL).build();
+	public AuthService() {
+		this.client = WebClient.create();
 	}
 	
 	
@@ -23,7 +23,7 @@ public class AuthService {
 		// TODO: throw proper exception based on response code
 		// https://www.baeldung.com/spring-5-webclient
 		return this.client.get()
-				.uri("/validate")
+				.uri(AUTH_URL)
 				.header("token", token)
 				.accept(MediaType.APPLICATION_JSON)
 				.retrieve()
