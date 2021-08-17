@@ -31,7 +31,7 @@ public class Recipe {
 	private Long ownerId;
 	
 	@Column
-	@Max(2048)
+	@Size(max = 2048)
 	private String description;
 	
 	@Column(nullable = false)
