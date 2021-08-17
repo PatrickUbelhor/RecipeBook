@@ -59,7 +59,6 @@ export default class ListInput extends React.Component<any, any> {
 	}
 
 	onChange = (event) => {
-		console.log(event.target);
 		const index = parseInt(event.target.name);
 		let nextValue = this.props.value.slice();
 
