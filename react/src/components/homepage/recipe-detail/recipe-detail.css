@@ -1,6 +1,8 @@
 .recipe-detail {
 	margin-left: 1rem;
 	margin-right: 1rem;
+	min-width: 24rem;
+	width: 100%;
 }
 
 .recipe-detail-header {

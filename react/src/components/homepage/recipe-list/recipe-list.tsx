@@ -32,6 +32,9 @@ function ConnectedRecipeList(props) {
 
 	return (
 		<div className="recipe-list-wrapper">
+			<div className="recipe-list-header">
+				<Typography variant="h4">My Recipes</Typography>
+			</div>
 			<List aria-label="My recipes">
 				{listItems}
 			</List>
