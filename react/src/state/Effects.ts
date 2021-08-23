@@ -2,7 +2,16 @@ import authClient from '../api/AuthClient';
 import recipeClient from '../api/RecipeClient';
 import userClient from '../api/UserClient';
 import { NewRecipe, Recipe } from '../model/Recipe';
-import { createRecipeSuccess, deleteRecipeSuccess, getRecipesSuccess, loginSuccess, logoutSuccess, setError, setThemeSuccess } from './Actions';
+import {
+	createRecipeSuccess,
+	deleteRecipeSuccess,
+	getRecipesSuccess,
+	loginSuccess,
+	logoutSuccess,
+	setError,
+	setThemeSuccess,
+	updateRecipeSuccess
+} from './Actions';
 
 
 const handleError = (error: any, message: string, dispatch) => {
@@ -108,6 +117,15 @@ export const createRecipe = (recipe: NewRecipe) => async (dispatch, getState) =>
 		dispatch(createRecipeSuccess(response.data));
 	} catch (error) {
 		handleError(error, 'Something went wrong creating a recipe', dispatch);
+	}
+};
+
+export const updateRecipe = (id: number, recipe: NewRecipe) => async (dispatch, getState) => {
+	try {
+		const response = await recipeClient.updateRecipe(getState().token, id, recipe);
+		dispatch(updateRecipeSuccess(response.data));
+	} catch (error) {
+		handleError(error, 'Something went wrong updating the recipe', dispatch);
 	}
 };
 

@@ -27,7 +27,17 @@ class RecipeClient {
 		};
 
 		return this.recipeClient.post(url, recipe, config);
-	}
+	};
+
+
+	updateRecipe = (token: string, id: number, recipe: NewRecipe): RecipeResponse<Recipe> => {
+		const url = `/recipe/${id}`;
+		const config = {
+			headers: { token: token }
+		};
+
+		return this.recipeClient.put(url, recipe, config);
+	};
 
 
 	deleteRecipe = (token: string, recipe: Recipe): RecipeResponse<void> => {
