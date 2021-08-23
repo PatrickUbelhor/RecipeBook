@@ -61,7 +61,7 @@ const reducer = function (state: IAppState = INITIAL_STATE, action: Action) {
 			const updatedRecipe = action.payload;
 			const nextRecipes = state.recipes.slice();
 			const index = nextRecipes.findIndex(recipe => recipe.id === updatedRecipe.id);
-			nextRecipes[index] = updatedRecipe.id;
+			nextRecipes[index] = updatedRecipe;
 
 			return {
 				...state,
