@@ -35,7 +35,7 @@ app.get('/login', (request, response) => {
 app.get('/logout', (request, response) => {
 	console.log('Received logout request');
 	response.send();
-})
+});
 
 app.post('/user', (request, response) => {
 	console.log('Received createUser request');
@@ -66,6 +66,20 @@ app.post('/recipe', (request, response) => {
 	recipe.id = id;
 	recipes.push(recipe);
 	response.json(recipe);
+});
+
+app.put('/recipe/:recipeId', (request, response) => {
+	console.log('Received updateRecipe request', request.params);
+	const id = parseInt(request.params['recipeId']);
+	const index = recipes.findIndex(recipe => recipe.id === id);
+	const oldRecipe = recipes[index];
+	const newRecipe = request.body;
+
+	newRecipe.id = oldRecipe.id;
+	newRecipe.ownerId = oldRecipe.ownerId;
+	recipes[index] = newRecipe;
+
+	response.json(newRecipe);
 });
 
 app.delete('/recipe/:recipeId', (request, response) => {
