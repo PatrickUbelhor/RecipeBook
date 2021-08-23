@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -66,6 +67,23 @@ public class RecipeController {
 		logger.info("Got all recipes");
 		
 		return ResponseEntity.ok(recipes);
+	}
+	
+	
+	@PutMapping(value = "/recipe/{recipeId}")
+	public ResponseEntity<Recipe> updateRecipe(
+			@PathVariable Long recipeId,
+			@RequestHeader String token,
+			@RequestBody Recipe recipe
+	) {
+		logger.info("Received updateRecipe request");
+		
+		User user = authService.validateToken(token);
+		Recipe updatedRecipe = recipeService.updateRecipe(user.getId(), recipeId, recipe);
+		
+		logger.info("Updated recipe '{}'", recipeId);
+		
+		return ResponseEntity.ok(updatedRecipe);
 	}
 	
 	
