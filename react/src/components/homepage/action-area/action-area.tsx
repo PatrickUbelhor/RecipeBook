@@ -2,7 +2,7 @@ import './action-area.css';
 import { Button } from '@material-ui/core';
 import React from 'react';
 import { connect } from 'react-redux';
-import { NewRecipe } from '../../../model/Recipe';
+import { NewRecipe } from '../../../model/recipe.model';
 import { createRecipe } from '../../../state/Effects';
 import EditRecipeModal from '../edit-recipe-modal/edit-recipe-modal';
 

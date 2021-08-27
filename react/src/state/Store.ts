@@ -1,6 +1,6 @@
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import { IAppState } from '../model/State';
+import { IAppState } from '../model/state.model';
 import { Action, Actions } from './Actions';
 
 const INITIAL_STATE: IAppState = {

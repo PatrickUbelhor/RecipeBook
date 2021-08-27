@@ -1,4 +1,4 @@
-import { Recipe } from '../model/Recipe';
+import { Recipe } from '../model/recipe.model';
 import { User } from '../model/user.model';
 
 export interface Action {

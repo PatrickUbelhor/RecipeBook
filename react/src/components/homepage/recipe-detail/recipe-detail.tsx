@@ -4,8 +4,8 @@ import { Card, CardContent, IconButton, Typography } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import { connect } from 'react-redux';
-import { NewRecipe } from '../../../model/Recipe';
-import { IAppState } from '../../../model/State';
+import { NewRecipe } from '../../../model/recipe.model';
+import { IAppState } from '../../../model/state.model';
 import { deleteRecipe, updateRecipe } from '../../../state/Effects';
 import EditRecipeModal from '../edit-recipe-modal/edit-recipe-modal';
 

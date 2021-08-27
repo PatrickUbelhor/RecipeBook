@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { NewRecipe, Recipe } from '../model/Recipe';
+import { NewRecipe, Recipe } from '../model/recipe.model';
 
 type RecipeResponse<T> = Promise<AxiosResponse<T>>;
 

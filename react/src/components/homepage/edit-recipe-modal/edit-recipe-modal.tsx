@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ListInput from '../../shared/list-input/list-input';
-import { NewRecipe } from '../../../model/Recipe';
+import { NewRecipe } from '../../../model/recipe.model';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from '@material-ui/core';
 
 interface IProps {
@@ -47,6 +47,7 @@ export default function EditRecipeModal(props: IProps) {
 				<TextField
 					autoFocus
 					label="Recipe Name"
+					helperText={recipe.name.length > 100 ? `${recipe.name.length}/128` : ''}
 					name="name"
 					onChange={handleChange}
 					value={recipe.name}
@@ -57,6 +58,7 @@ export default function EditRecipeModal(props: IProps) {
 				/>
 				<TextField
 					label="Description"
+					helperText={recipe.description.length > 2000 ? `${recipe.description.length}/2048` : ''}
 					name="description"
 					onChange={handleChange}
 					value={recipe.description}

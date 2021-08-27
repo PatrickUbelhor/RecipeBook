@@ -1,7 +1,7 @@
 import authClient from '../api/AuthClient';
 import recipeClient from '../api/RecipeClient';
 import userClient from '../api/UserClient';
-import { NewRecipe, Recipe } from '../model/Recipe';
+import { NewRecipe, Recipe } from '../model/recipe.model';
 import {
 	createRecipeSuccess,
 	deleteRecipeSuccess,

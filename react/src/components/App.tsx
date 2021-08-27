@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
 import { connect } from 'react-redux';
-import { IAppState } from '../model/State';
+import { IAppState } from '../model/state.model';
 import { initApp } from '../state/Effects';
 import Header from './header/Header';
 import Homepage from './homepage/homepage';

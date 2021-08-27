@@ -2,7 +2,7 @@ import './recipe-list.css';
 import { List, ListItem, Typography } from '@material-ui/core';
 import React from 'react';
 import { connect } from 'react-redux';
-import { IAppState } from '../../../model/State';
+import { IAppState } from '../../../model/state.model';
 import { selectRecipe } from '../../../state/Actions';
 
 const select = (state: IAppState) => ({
