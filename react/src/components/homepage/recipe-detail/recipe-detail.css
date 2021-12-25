@@ -7,12 +7,15 @@
 
 .recipe-detail-header {
 	display: flex;
-	align-items: center;
 	margin-bottom: 12px;
 }
 
 .recipe-detail-header-actions {
 	margin-left: auto;
+	height: 2.625rem;
+	display: flex;
+	align-items: center;
+	white-space: nowrap;
 }
 
 .recipe-detail-header-actions-delete {

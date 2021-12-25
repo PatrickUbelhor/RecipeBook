@@ -56,5 +56,36 @@
 			"Put patty on bun",
 			"Add toppings"
 		]
+	},
+	{
+		"id": 3,
+		"ownerId": 1,
+		"name": "Healthy Banana Oatmeal Cookies with Chocolate Chips",
+		"description": "Soft and chewy Banana Oatmeal Cookies with Chocolate Chips. Banana makes the cookies naturally moist and sweet. Perfect for healthy snacks and desserts!",
+		"serveCount": 10,
+		"prepTimeMins": 15,
+		"totalTimeMins": 150,
+		"ingredients": [
+			"1 cup quick oats (I recommend quick oats over rolled oats, as the rolled oats will have a much firmer texture that is harder to chew)",
+			"3/4 cup whole wheat pastry flour (or substitute white whole wheat flour or all-purpose flour",
+			"1 1/2 teaspoons baking powder",
+			"1/2 teaspoon ground cinnamon",
+			"1/4 teaspoon kosher salt",
+			"1 large very ripe banana (enough to yield 1/2 cup mashed)",
+			"2 tablespoons virgin coconut oil (at room temperature)",
+			"1 large egg (at room temperature)",
+			"1/4 cup plus 2 tablespoons light brown sugar",
+			"1 teaspoon pure vanilla extract",
+			"3/4 cup dark chocolate chips"
+		],
+		"directions": [
+			"Line a large baking sheet with parchment paper or a silicone baking mat. In a medium mixing bowl, stir together the oats, whole wheat pastry flour, baking powder, cinnamon, and salt until combined. Set aside.",
+			"In a large mixing bowl or the bowl of a standing mixer fitted with the paddle attachment, mash the banana (I use the mixer to do this), checking to make sure you have 1/2 cup. Add the coconut oil (or butter), egg, brown sugar, and vanilla extract and beat on medium high until very well combined, at least 3 minutes, stopping to scrape down the bowl as needed. The batter will be a little bit chunky and wet.",
+			"Add the dry ingredients to the wet ingredients. Mix on low speed, just until the flour disappears, about 1 minute. Mix in the chocolate chips. The batter will be wet, somewhat loose, and sticky.",
+			"With a large cookie scoop or a measuring cup, portion the dough in 1/4-cup amounts and drop in round mounds onto the prepared baking sheet. Refrigerate for at least 2 hours to allow the dough to firm up (the cookies will spread and not set properly if baked immediately), or cover the cookie sheet with plastic wrap and refrigerate for up to 2 days.",
+			"When ready to bake, preheat the oven to 350 degrees F.",
+			"Place the cookie sheet in the oven directly from the refrigerator and bake 10 to 13 minutes, until the cookies are dry set on the edges and feel set on top and a toothpick inserted in the center comes out clean. The cookies will look underbaked and will feel slightly underbaked when pressed. The amount of baking time you need will vary depending upon the moisture content of the banana. Don't be afraid to leave them in an extra minute or two if they still appear to be raw.",
+			"Let the cookies cool on the baking sheet for 10 minutes, then transfer to a wire rack to finish cooling completely."
+		]
 	}
 ]

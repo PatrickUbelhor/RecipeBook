@@ -38,6 +38,18 @@ public class RecipeService {
 	}
 	
 	
+	public Recipe updateRecipe(Long userId, Long recipeId, Recipe nextRecipe) {
+		Recipe oldRecipe = recipeRepository.findRecipeByOwnerIdAndId(userId, recipeId)
+				.orElseThrow(() -> new RecipeNotFoundException(recipeId));
+		
+		nextRecipe.setId(oldRecipe.getId());
+		nextRecipe.setOwnerId(oldRecipe.getOwnerId());
+		recipeRepository.save(nextRecipe);
+		
+		return nextRecipe;
+	}
+	
+	
 	public void deleteRecipe(Long recipeId) {
 		recipeRepository.deleteById(recipeId);
 	}

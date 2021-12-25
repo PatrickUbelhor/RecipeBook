@@ -1,6 +1,6 @@
 import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
-import { IAppState } from '../model/State';
+import { IAppState } from '../model/state.model';
 import { Action, Actions } from './Actions';
 
 const INITIAL_STATE: IAppState = {
@@ -56,6 +56,17 @@ const reducer = function (state: IAppState = INITIAL_STATE, action: Action) {
 				...state,
 				recipes: state.recipes.concat(action.payload),
 				selectedRecipe: action.payload
+			};
+		case Actions.UPDATE_RECIPE_SUCCESS:
+			const updatedRecipe = action.payload;
+			const nextRecipes = state.recipes.slice();
+			const index = nextRecipes.findIndex(recipe => recipe.id === updatedRecipe.id);
+			nextRecipes[index] = updatedRecipe;
+
+			return {
+				...state,
+				recipes: nextRecipes,
+				selectedRecipe: (state.selectedRecipe.id === updatedRecipe.id) ? updatedRecipe : state.selectedRecipe
 			};
 		case Actions.DELETE_RECIPE_SUCCESS:
 			return {
